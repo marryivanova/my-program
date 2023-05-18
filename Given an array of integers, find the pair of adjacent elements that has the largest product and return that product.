@@ -1,0 +1,15 @@
+def solution(inputArray):
+    uniqueList = []
+    
+    for item in inputArray:
+        itemExist = False
+        for x in uniqueList:
+            if x == item:
+                itemExist = True
+                break
+        if not itemExist:
+            uniqueList.append(item)
+    min_number = min(uniqueList)
+    max_number = max(uniqueList)
+    num = min_number * max_number
+    return(num)
