@@ -18,7 +18,7 @@ class GameOfLife:
         self.cell_width = self.width // self.cell_size
         self.cell_height = self.height // self.cell_size
 
-        # Создаем двумерный список ячеек
+        # Создаем двумерный массив для хранения ячеек
         self.cells = [[0 for y in range(self.cell_height)] for x in range(self.cell_width)]
 
         # Скорость протекания игры
@@ -66,9 +66,9 @@ class GameOfLife:
             pygame.display.flip()
             clock.tick(self.speed)
         
-        pygame.quit()
+        pygame.quit()   
 
 
 if __name__ == '__main__':
-    game = GameOfLife(640, 480, 10)
+    game = GameOfLife(320, 240, 10)
     game.run()
