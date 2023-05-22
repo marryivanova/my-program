@@ -1,0 +1,69 @@
+import pygame
+
+# инициализация Pygame
+pygame.init()
+
+# размер окна
+width = 400
+height = 400
+
+# размер клетки
+cell_size = 20
+
+# цвета
+white = (255, 255, 255)
+black = (0, 0, 0)
+grey = (128, 128, 128)
+red = (255, 0, 0)
+
+# создание окна
+screen = pygame.display.set_mode((width, height))
+pygame.display.set_caption('Grid')
+
+# функция для отрисовки клетки
+def draw_cell(x, y, color):
+    pygame.draw.rect(screen, color, (x, y, cell_size, cell_size))
+
+# создание сетки
+grid = []
+for i in range(width // cell_size):
+    row = []
+    for j in range(height // cell_size):
+        row.append(0)
+    grid.append(row)
+
+# количество шагов заполнения
+n = 3
+
+# основной цикл программы
+while True:
+    # обработка событий
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            quit()
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            # получение координат мыши
+            x, y = event.pos
+            # определение индексов клетки
+            i = x // cell_size
+            j = y // cell_size
+            # установка активной клетки
+            grid[i][j] = 1
+            draw_cell(i * cell_size, j * cell_size, black)
+            # проверка соседних клеток
+            for step in range(n):
+                new_cells = []
+                for i in range(len(grid)):
+                    for j in range(len(grid[0])):
+                        if grid[i][j] == 1:
+                            for dx, dy in [(0, -1), (0, 1), (-1, 0), (1, 0)]:
+                                ni, nj = i + dx, j + dy
+                                if ni >= 0 and ni < len(grid) and nj >= 0 and nj < len(grid[0]) and grid[ni][nj] == 0:
+                                    new_cells.append((ni, nj))
+                for ni, nj in new_cells:
+                    grid[ni][nj] = 1
+                    draw_cell(ni * cell_size, nj * cell_size, white)
+
+    # обновление экрана
+    pygame.display.update()
