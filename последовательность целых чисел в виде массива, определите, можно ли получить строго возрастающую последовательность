@@ -6,3 +6,28 @@ def solution(sequence):
             return False
     return True
     
+    
+ def is_sequence_increasing(sequence):
+ """
+    Проверяет, является ли полученный список строго возрастающей последовательностью.
+
+    :param sequence: список элементов.
+    :return: True, если последовательность возрастающая, иначе - False.
+ """
+   if not isinstance(sequence, list):         
+        return False
+  for x, y in zip(sequence, sequence[1:]):
+       if x >= y:   
+            return False
+    return True
+Добавим тесты, чтобы проверить работу функции:
+
+def test_is_sequence_increasing():
+    assert is_sequence_increasing([]) == False
+    assert is_sequence_increasing([1]) == True
+    assert is_sequence_increasing([1, 2, 3, 4, 5]) == True
+    assert is_sequence_increasing([1, 2, 2, 4, 5]) == False
+    assert is_sequence_increasing([5, 4, 3, 2, 1]) == False
+Вызываем функцию в тестах:
+
+test_is_sequence_increasing()
