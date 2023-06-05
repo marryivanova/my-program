@@ -31,3 +31,24 @@ def test_is_sequence_increasing():
 Вызываем функцию в тестах:
 
 test_is_sequence_increasing()
+
+
+
+
+#Верный вариант ответа
+
+def solution(sequence):
+    if len(sequence) == 1:
+        return True
+    
+    decreasing = 0
+    for i in range(1,len(sequence)):
+        if sequence[i] <= sequence[i-1]:
+            decreasing +=1
+            if decreasing > 1:
+                return False
+        
+        if sequence[i] <= sequence[i-2] and i-2 >=0:
+            if i != len(sequence)-1 and sequence[i+1] <= sequence[i-1]:
+                return False
+    return True
