@@ -1,1 +1,3 @@
+def solution(matrix):
+    return sum(sum(row) for row in matrix)
 
