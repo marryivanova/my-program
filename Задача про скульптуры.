@@ -1,0 +1,38 @@
+n, x, t = map(int, input().split())
+a = list(map(int, input().split()))
+
+# Вычисляем, какие скульптуры будет возможно сделать идеальными
+possible_perfect_sculptures = [i for i in range(n) if abs(x - a[i]) <= t]
+
+# Создаем список, в котором каждый элемент - это индекс скульптуры
+# Мы будем сортировать этот список в порядке возрастания diff
+sculptures_sorted_by_diff = list(range(n))
+
+# Сортируем список sculptures_sorted_by_diff по возрастанию значений diff
+# Для этого используем лямбда-функцию, которая возвращает значение diff по индексу sculptures_sorted_by_diff[i]
+sculptures_sorted_by_diff.sort(key=lambda i: abs(x - a[i]))
+
+# Инициализируем переменную num_perfect_sculptures - количество идеальных скульптур
+# Будем увеличивать её, пока не превысим количество возможных идеальных скульптур
+num_perfect_sculptures = 0
+
+# Создаем список perfect_sculptures - индексы идеальных скульптур
+perfect_sculptures = []
+
+# Проходим по списку sculptures_sorted_by_diff
+for i in sculptures_sorted_by_diff:
+    # Если это скульптура может стать идеальной и мы еще не достигли максимума идеальных скульптур,
+    # то добавляем её в список идеальных скульптур
+    if i in possible_perfect_sculptures and num_perfect_sculptures < len(possible_perfect_sculptures):
+        perfect_sculptures.append(i)
+        num_perfect_sculptures += 1
+    # Если мы уже достигли максимума идеальных скульптур, то заканчиваем цикл
+    elif num_perfect_sculptures == len(possible_perfect_sculptures):
+        break
+    # Если мы не можем сделать эту скульптуру идеальной, то переходим к следующей скульптуре
+    else:
+        continue
+
+# Выводим результаты
+print(num_perfect_sculptures)
+print(" ".join(str(p + 1) for p in perfect_sculptures))
