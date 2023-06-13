@@ -1,0 +1,40 @@
+# Получаем количество рядов на клавиатуре
+n = int(input())
+
+# Создаем словарь, где ключом является номер ряда, а значением - набор клавиш, принадлежащих этому ряду
+rows = {}
+for i in range(n):
+    row_number = int(input())
+    row = rows.get(row_number, set())
+    key_id = int(input())
+    row.add(key_id)
+    rows[row_number] = row
+
+# Получаем вводимый текст
+k = int(input())
+text = list(map(int, input().split()))
+
+# Создаем словарь, где ключом является идентификатор символа, а значением - номер ряда, на котором находится этот символ.
+keys_row = {}
+for row_number, keys in rows.items():
+    for key_id in keys:
+        keys_row[key_id] = row_number
+
+# Инициализируем переменные
+prev_row = -1 # предыдущий ряд в тексте
+disorder = 0 # количество разнорядных переходов
+
+# Проходим по каждому символу в тексте
+for i in range(1, k):
+    curr_key_id = text[i]
+    curr_row = keys_row[curr_key_id]
+
+    # Если нашли ряд текущего символа - проверяем, что он не на том же ряду, что и предыдущий символ
+    if prev_row != -1 and prev_row != curr_row:
+        disorder += 1
+
+    # Запоминаем текущий ряд для следующего символа
+    prev_row = curr_row
+
+# Выводим результат
+print(disorder)
