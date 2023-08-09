@@ -1,0 +1,10 @@
+def wer_sm(a, b):
+    if a % b == 0 or b % a == 0:
+        return 1
+    else:
+        return 10
+a = int(input("Введите значение m: "))
+b = int(input("Введите значение n: "))
+
+result = wer_sm(a, b)
+print(result)
