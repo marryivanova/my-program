@@ -1,0 +1,8 @@
+list  = []
+sorted_list = list.sorted
+result = sorted_list[-1]
+print(result) 
+
+list  = []
+max_number = max(list)
+print max_number  
