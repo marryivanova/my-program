@@ -1,0 +1,8 @@
+s = int(input())
+n = int(input())
+
+total_power = s * (s + 1) // 2
+remainder = n % total_power
+result = remainder % s
+
+print(result)
