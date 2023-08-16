@@ -1,0 +1,31 @@
+def count_unique_chars(n, k, password):
+    char_count = [0] * 26
+
+    for c in password:
+        char_count[ord(c) - ord('a')] += 1
+
+    char_count.sort()
+    deletion_count = 0
+
+    for i in range(26):
+        if k >= char_count[i]:
+            k -= char_count[i]
+            char_count[i] = 0
+        else:
+            char_count[i] -= k
+            k = 0
+            break
+
+    for i in range(26):
+        if char_count[i] > 0:
+            deletion_count += 1
+
+    return deletion_count
+
+# Ввод данных пользователя
+n, k = map(int, input().split())
+password = input()
+
+# Вызов функции и вывод результата
+result = count_unique_chars(n, k, password)
+print(result)
