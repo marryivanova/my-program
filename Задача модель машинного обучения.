@@ -21,3 +21,19 @@ for i in range(s, 0, -1):
         break  # если данных меньше, чем мощность сервера, прерываем цикл
 
 print(remaining_data)  # выводим оставшееся количество данных для обработки вручную
+
+# 2 вариант: верный
+
+s = int(input())
+n = int(input())
+
+remaining_data = n  # оставшиеся данные для обработки
+current_server = s  # текущий сервер, с которого начинаем
+
+while remaining_data >= current_server:
+    remaining_data -= current_server  # вычитаем из оставшихся данных мощность текущего сервера
+    current_server = (current_server % s) + 1  # переключаемся на следующий сервер
+
+manual_processing_data = remaining_data
+
+print(manual_processing_data)
