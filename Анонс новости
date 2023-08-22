@@ -1,0 +1,22 @@
+def reduce_proposal(proposal, constraint):
+    def shorten_headlines(length, count):
+        shortened_headlines = []
+        for _ in range(count):
+            headlines = input()
+            shortened_headline = headlines[:length] + "..." if len(headlines) > length else headlines
+            shortened_headlines.append(shortened_headline)
+        return shortened_headlines
+    
+    if len(proposal) > constraint:
+        reduced_proposal = proposal[:constraint] + "..."
+    else:
+        reduced_proposal = proposal
+        
+    return reduced_proposal
+
+input_proposal = input("Enter the proposal: ")
+constraint = int(input("Enter the constraint: "))
+
+reduced_proposal = reduce_proposal(input_proposal, constraint)
+
+print("Reduced proposal:", reduced_proposal)
