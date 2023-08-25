@@ -1,0 +1,5 @@
+def find_repeating_element(sequence):
+    for i in range(len(sequence) - 2):
+        if sequence[i] == sequence[i + 2]:
+            return sequence[i]
+    return None
