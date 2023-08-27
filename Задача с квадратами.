@@ -1,0 +1,9 @@
+def are_elements_equal(lst):
+    if all(elem == lst[0] for elem in lst):
+        return "Yes"
+    else:
+        return "No"
+
+my_list = [1, 1, 1, 1, 1]  # Example list
+result = are_elements_equal(my_list)
+print(result)
