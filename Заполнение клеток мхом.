@@ -1,0 +1,14 @@
+def count_moss(n):
+    if n == 1:
+        return 1
+    elif n == 2:
+        return 2
+    else:
+        a, b = 1, 2
+        for _ in range(n - 2):
+            a, b = b, a + 4*b
+        return b
+
+n = int(input())
+result = count_moss(n)
+print(result)
