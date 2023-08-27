@@ -1,0 +1,29 @@
+def is_valid_expression(expression):
+    stack = []
+    
+    for char in expression:
+        if char == '(':
+            stack.append(char)
+        elif char == ')':
+            if len(stack) == 0 or stack.pop() != '(':
+                return False
+    
+    return len(stack) == 0
+
+def calculate_expression(expression):
+    if not is_valid_expression(expression):
+        return "WRONG"
+    
+    expression = expression[:-1]  # Удаляем точку в конце выражения
+    
+    try:
+        result = eval(expression)
+        return result
+    except ZeroDivisionError:
+        return "WRONG"
+    except:
+        return "WRONG"
+
+input_expression = input()
+result = calculate_expression(input_expression)
+print(result)
