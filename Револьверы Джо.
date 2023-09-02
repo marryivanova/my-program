@@ -1,0 +1,15 @@
+n, s = map(int, input().split())
+revolvers = list(map(int, input().split()))
+
+# Сортируем список револьверов по убыванию цены
+revolvers.sort(reverse=True)
+
+# Итерируемся по отсортированным револьверам
+for revolver in revolvers:
+    # Если цена револьвера меньше или равна сумме денег у ковбоя, выводим эту цену
+    if revolver <= s:
+        print(revolver)
+        break
+else:
+    # Не нашли подходящего револьвера = 0
+    print(0)
