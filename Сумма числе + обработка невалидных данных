@@ -1,0 +1,11 @@
+def sum_numbers(x, y):
+    if x < -32000 or x > 32000:
+        return "Вы ввели неверное число!"
+    return x + y 
+
+try:
+    x = int(input())
+    y = int(input())
+    print(sum_numbers(x, y))
+except ValueError:
+    print("Ошибка ввода: ожидаются целые числа.")
