@@ -1,0 +1,40 @@
+Приношу извинения за предыдущие неправильные ответы. Вот исправленное решение, учитывающее условия задачи:
+­
+
+from collections import Counter
+
+def rob_the_bank(target_amount, denominations):
+    # Подсчет количества купюр каждого номинала
+    count = Counter(denominations)
+    
+    # Проверка наличия пары купюр равных половине необходимой суммы
+    if target_amount % 2 == 0 and count[target_amount // 2] >= 2:
+        return 2, target_amount // 2, target_amount // 2
+    
+    # Поиск пары купюр, сумма которых равна необходимой сумме
+    for denomination in count:
+        complement = target_amount - denomination
+        if complement != denomination and count[complement] > 0:
+            return 2, denomination, complement
+    
+    # Поиск тройки различных купюр суммой равной необходимой сумме
+    for denomination1 in count:
+        for denomination2 in count:
+            complement = target_amount - denomination1 - denomination2
+            if complement != denomination1 and complement != denomination2 and count[complement] > 0:
+                return 3, denomination1, denomination2, complement
+    
+    # Решение невозможно
+    return -1
+
+# Чтение входных данных
+target_amount, n = map(int, input().split())
+denominations = list(map(int, input().split()))
+
+# Вызов функции и вывод результатов
+result = rob_the_bank(target_amount, denominations)
+if result == -1:
+    print(result)
+else:
+    print(result[0])
+    print(*result[1:])
