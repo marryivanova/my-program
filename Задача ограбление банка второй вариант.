@@ -1,0 +1,28 @@
+def subset_sum(target, numbers):
+    if target == 0:
+        return []
+    if target < 0 or not numbers:
+        return None
+
+    res = subset_sum(target - numbers[0], numbers[1:])
+    if res is not None:
+        return [numbers[0]] + res
+
+    res = subset_sum(target, numbers[1:])
+    if res is not None:
+        return res
+
+    return None
+
+
+# Чтение входных данных
+n, m = map(int, input().split())
+nominals = list(map(int, input().split()))
+
+# Вызов функции и вывод результата
+result = subset_sum(n, nominals)
+if result is None:
+    print(-1)
+else:
+    print(len(result))
+    print(*result)
