@@ -1,0 +1,18 @@
+from collections import Counter
+
+def max_sheriff_words(s):
+    sheriff_word = "sheriff"
+    s_counter = Counter(s)
+    max_words = float('inf')
+    
+    for char in sheriff_word:
+        if char not in s_counter:
+            return 0
+        max_words = min(max_words, s_counter[char])
+    
+    return max_words
+
+# Пример использования:
+s = input() # Вводим строку s
+result = max_sheriff_words(s)
+print(result)
