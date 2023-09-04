@@ -1,0 +1,33 @@
+class TrieNode:
+    def __init__(self):
+        self.count = 0
+        self.children = {}
+
+# Function to calculate similarity
+def calculate_similarity(arrays):
+    n = len(arrays)
+    similarity_sum = 0
+    root = TrieNode()
+
+    for array in arrays:
+        current_node = root
+        for element in array:
+            if element not in current_node.children:
+                current_node.children[element] = TrieNode()
+            current_node = current_node.children[element]
+            similarity_sum += current_node.count
+            current_node.count += 1
+
+    return similarity_sum
+
+# Read input data
+n = int(input())
+arrays = []
+for _ in range(n):
+    k = int(input())
+    array = list(map(int, input().split()))
+    arrays.append(array)
+
+# Calculate and print the result
+similarity_sum = calculate_similarity(arrays)
+print(similarity_sum)
