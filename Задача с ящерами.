@@ -1,0 +1,24 @@
+def days_and_seconds(start, end):
+    days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]  # Количество дней в месяце
+    year_start, month_start, day_start, hour_start, minute_start, second_start = start
+    year_end, month_end, day_end, hour_end, minute_end, second_end = end
+
+    # Вычисление количества дней с учетом високосных годов
+    days = (year_end - year_start) * 365
+    days += sum(days_in_month[:month_end - 1]) - sum(days_in_month[:month_start - 1]) + (day_end - day_start)
+
+    # Вычисление количества секунд в неполном дне
+    seconds = (hour_end - hour_start) * 60 * 60 + (minute_end - minute_start) * 60 + (second_end - second_start)
+
+    return days, seconds
+
+start_date_input = input("Введите дату начала существования ящеров (в формате: год месяц день часы минуты секунды): ")
+end_date_input = input("Введите дату окончания существования ящеров (в формате: год месяц день часы минуты секунды): ")
+
+# Разбиваем введенные значения на отдельные переменные
+start_date = [int(x) for x in start_date_input.split()]
+end_date = [int(x) for x in end_date_input.split()]
+
+# Вызываем функцию и выводим результаты в одной строке
+days, seconds = days_and_seconds(start_date, end_date)
+print(f"{days} {seconds}")
