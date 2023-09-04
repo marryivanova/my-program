@@ -1,0 +1,37 @@
+def calculate_sum(N, M, Q, columns, table, constraints):
+    # Создаем словарь, где ключ - имя колонки, значение - список чисел из соответствующей колонки
+    data = {col: [] for col in columns}
+    for i in range(N):
+        line = table[i]
+        for j in range(M):
+            data[columns[j]].append(line[j])
+
+    # Проверяем каждую строку, удовлетворяет ли она всем ограничениям
+    total_sum = 0
+    for i in range(N):
+        valid = True
+        for constraint in constraints:
+            column_name, comparison, value = constraint
+            value = int(value)  # Преобразуем значение к целочисленному типу
+            if comparison == ">" and data[column_name][i] <= value:
+                valid = False
+                break
+            if comparison == "<" and data[column_name][i] >= value:
+                valid = False
+                break
+        if valid:
+            total_sum += sum(data[col][i] for col in columns)
+    return total_sum
+
+
+# Считываем данные
+N, M, Q = map(int, input().split())
+columns = input().split()
+table = [list(map(int, input().split())) for _ in range(N)]
+constraints = [input().split() for _ in range(Q)]
+
+# Вычисляем сумму
+result = calculate_sum(N, M, Q, columns, table, constraints)
+
+# Выводим результат
+print(result)
