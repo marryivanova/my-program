@@ -1,0 +1,15 @@
+def mul_to_int(a, b):
+    result = a * b
+    if isinstance(result, (int, float)):
+        if result == int(result):
+            return int(result)
+        else:
+            return float(result)
+    else:
+        return result
+
+a, b = input("Введите числа: ").split()
+a = int(a)
+b = int(b)
+res = mul_to_int(a, b)
+print(res)
