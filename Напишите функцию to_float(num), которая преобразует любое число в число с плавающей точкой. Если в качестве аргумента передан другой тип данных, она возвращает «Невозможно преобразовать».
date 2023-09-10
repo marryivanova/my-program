@@ -1,0 +1,8 @@
+def to_float(num):
+    if isinstance(num, (int, float)):
+        return float(num)
+    return "Невозможно преобразовать"
+
+num = input("Введите число: ")
+result = to_float(num)
+print(result)
