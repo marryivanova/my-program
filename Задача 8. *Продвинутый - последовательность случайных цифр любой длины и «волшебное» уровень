@@ -1,0 +1,9 @@
+def magic(*args,k):
+    sq_sum = 0
+    for i in args:
+            sq_sum += i ** 2
+    if sq_sum % k == 0:
+        return 'Волшебство случается'
+    return 'Никакого волшебства'
+
+print(magic(2, 5, 7, k=5))
