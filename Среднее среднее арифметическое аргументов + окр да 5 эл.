@@ -1,0 +1,6 @@
+def avg_5(a, b, c, d):
+    return round((a + b + c + d) / 4, 5)
+
+a, b, c, d = map(int, input("Введите числа: ").split())
+result = avg_5(a, b, c, d)
+print(result)
