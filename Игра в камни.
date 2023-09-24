@@ -1,0 +1,15 @@
+def stones(n, m):
+    if (n + m) % 2 == 0:
+        if n % 2 == 0 or m % 2 == 0:
+            return "Lose"
+        else:
+            return "Win"
+    else:
+        if n % 2 == 1 or m % 2 == 1:
+            return "Win"
+        else:
+            return "Lose"
+
+n, m = map(int, input().split())
+result = stones(n, m)
+print(result)
