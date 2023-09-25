@@ -1,0 +1,24 @@
+def hanoi_towers(n, from_peg, to_peg, aux_peg):
+    moves = []  # список ходов
+    if n == 1:
+        moves.append((from_peg, to_peg))
+    else:
+        moves.extend(hanoi_towers(n - 1, from_peg, aux_peg, to_peg))
+        moves.append((from_peg, to_peg))
+        moves.extend(hanoi_towers(n - 1, aux_peg, to_peg, from_peg))
+    return moves
+
+# Ввод данных
+n = int(input())  # количество дисков
+from_peg = 1  # исходная пега
+aux_peg = 2  # вспомогательная пега
+to_peg = 3  # целевая пега
+
+# Решение
+moves = hanoi_towers(n, from_peg, to_peg, aux_peg)
+num_moves = len(moves)
+
+# Вывод результата
+print(num_moves)
+for move in moves:
+    print(f"{move[0]} {move[1]}")
