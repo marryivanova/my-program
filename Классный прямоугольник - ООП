@@ -1,0 +1,16 @@
+class Rectangle:
+    def __init__(self, coordinates_1, coordinates_2):
+        self.coordinates_1 = coordinates_1
+        self.coordinates_2 = coordinates_2
+
+    def perimeter(self):
+        a = abs(self.coordinates_1[0] - self.coordinates_2[0])
+        b = abs(self.coordinates_1[1] - self.coordinates_2[1])
+        p = 2 * (a + b)
+        return round(p, 2)
+
+    def area(self):
+        a = abs(self.coordinates_1[0] - self.coordinates_2[0])
+        b = abs(self.coordinates_1[1] - self.coordinates_2[1])
+        s = a * b
+        return round(s, 2)
