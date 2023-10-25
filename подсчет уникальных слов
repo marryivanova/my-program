@@ -1,0 +1,15 @@
+# Читаем количество придорожных местностей
+N = int(input())
+
+# Создаем пустое множество для хранения объектов
+objects = set()
+
+# Читаем описание придорожных местностей
+for _ in range(N):
+    descriptions = input().split()
+    for obj in descriptions:
+        objects.add(obj)
+
+# Выводим найденные объекты в алфавитном порядке
+for obj in sorted(objects):
+    print(obj)
