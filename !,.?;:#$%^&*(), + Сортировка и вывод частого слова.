@@ -1,0 +1,34 @@
+def remove_punctuation(word):
+    symbols = "!,.?;:#$%^&*()"
+    cleaned_word = ""
+    for char in word:
+        if char not in symbols:
+            cleaned_word += char
+    return cleaned_word
+
+def repeating_elements(string_words):
+    word_count = {}
+    cleaned_words = []
+
+    for word in string_words:
+        cleaned_word = remove_punctuation(word).lower()
+        cleaned_words.append(cleaned_word)
+
+    for word in cleaned_words:
+        if len(word) >= 5:
+            unique_chars = set(word)
+            if len(unique_chars) >= 4:
+                word_count[word] = word_count.get(word, 0) + 1
+    
+    repeated_words = [word for word, count in word_count.items() if count > 2]
+    return sorted(repeated_words)
+
+# Пример использования функций
+input_string = input("Введите строку: ")
+words = input_string.split()
+
+cleaned_words = [word for word in words if len(word) >= 5]  # Фильтруем слова по длине
+repeated = repeating_elements(cleaned_words)
+
+for word in repeated:
+    print(word)
