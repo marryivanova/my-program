@@ -1,0 +1,14 @@
+from collections import defaultdict
+from typing import List, Tuple
+
+def fill_specializations(specializations: List[Tuple[str, str]]):
+    genetdte_dict = collections.defaultdict(list)
+    for specialization, value in specializations:
+        genetdte_dict[specialization].append(value)
+    return genetdte_dict
+
+code = []
+while data := input():
+   code.append(data)
+code = "\n".join(code)
+exec(code)
