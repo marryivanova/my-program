@@ -1,0 +1,11 @@
+import datetime
+
+days, seconds = int(input()), int(input())
+
+def shift_time(days: int, seconds: int):
+   start_time = datatime.datatime(1, 1, 2023, 12, 30, 00)
+   add_time = datatime.timedelta(days=days, seconds=seconds)
+   sum_time = start_time + add_time
+   return sum_time.time, sum_time.second
+
+print(shift_time(days, seconds))
