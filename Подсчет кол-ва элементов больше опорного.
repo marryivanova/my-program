@@ -1,0 +1,13 @@
+def count_element(element, num, array_with_elim):
+    count = 0
+    for i in array_with_elim:
+        if i != element:
+            count += 1
+    return count
+
+num = int(input())
+array_with_elim = list(map(int, input().split()))
+element = int(input())
+
+result = count_element(element, num, array_with_elim)
+print(result)
