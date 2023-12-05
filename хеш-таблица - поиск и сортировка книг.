@@ -1,0 +1,48 @@
+class BookLibrary:
+    array_with_id = []
+
+    def __init__(self, id, name_books, years, size):
+        self._id = id
+        self.name_books = name_books
+        self.years = years
+        self.size = size
+    
+    @property
+    def id(self):
+      return self._id
+
+    @id.setter
+    def id(self, id):
+       if id == 10:
+          self._id = id
+       else:
+          print("10 символов!")
+
+    def hash_function(self, id):
+        return id % self.size
+
+    def add_book(self, id, book_title, year):
+        index = self.hash_function(id)
+        self.array_with_id[index].append({'id': id, 'название': book_title, 'год': year})
+
+    def get_book(self, key, id):
+        index = self.hash_function(key)
+        for item in self.array_with_id[index]:
+            if item['id'] == id:
+                return item
+        return None
+
+    def sort_years(self):
+        sorted_keys = sorted(self.array_with_id.keys())
+        sorted_values = [self.array_with_id[key] for key in sorted_keys]
+        return sorted_values
+
+# Использую класс 
+n = int(input("Кол-во книг: "))
+id = int(input("ID книги: "))
+name = input("Название книги: ")
+years = int(input("Год издания книги: "))
+
+# Создание экземпляра класса и добавление книги
+library = BookLibrary(1, "Book Name", 2023, 10)
+library.add_book(id, name, years)
