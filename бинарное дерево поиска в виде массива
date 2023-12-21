@@ -1,0 +1,22 @@
+def min_max_search(list_num):
+    max_value = list_num[0]
+    index = 0
+    if index >= len(list_num):
+        return min
+    left_child = 2 * index + 1
+    right_child = 2 * index + 2
+
+    if left_child < len(list_num):
+        max_value = min(max_value, min_max_search(list_num[left_child:]))
+    if right_child < len(list_num):
+        max_value = min(max_value, min_max_search(list_num[right_child:]))
+
+    return max_value
+
+count_num = int(input())
+
+list_num = [int(x) for x in input().split()]
+
+result = min_max_search(list_num)
+
+print(result)
