@@ -1,0 +1,20 @@
+def max_subarray(arr, k):
+    n = len(arr)
+    max_prod = float('-inf')
+    current_prod = 1
+
+    for i in range(n):
+        current_prod *= arr[i]
+        if i >= k:
+            current_prod /= arr[i - k]
+        if i >= k - 1:
+            max_prod = max(max_prod, current_prod)
+
+    return max_prod
+
+count_elem = int(input())
+arr = list(map(int, input().split()))
+k = int(input())
+
+result = max_subarray(arr, k)
+print(result)
