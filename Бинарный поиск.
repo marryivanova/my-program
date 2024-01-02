@@ -1,0 +1,23 @@
+def binary_search(list1, num):
+    low = 0
+    high = len(list1) - 1
+
+    while low <= high:
+        mid = (low + high) // 2
+
+        if list1[mid] < num:
+            low = mid + 1
+        elif list1[mid] > num:
+            high = mid - 1
+        else:
+            return True
+
+    return False
+
+count_el = int(input())
+list1 = list(map(int, input().split()))
+n = int(input())
+
+result = binary_search(list1, n)
+
+print(result)
