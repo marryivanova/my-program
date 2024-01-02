@@ -1,0 +1,26 @@
+class Stack:
+    def __init__(self):
+        self.stack = []
+
+    def push(self, item):
+        self.stack.append(item)
+
+    def pop(self):
+        if len(self.stack) == 0:
+            return None
+        removed = self.stack.pop()
+        return removed
+
+    def removed_duplicate(self, s):
+        for char in s:
+            if len(self.stack) > 0 and char == self.stack[-1]:
+                self.pop()
+            else:
+                self.push(char)
+
+            return ''.join(self.stack)
+
+s = Stack()
+s.removed_duplicate('cdffd')
+print(s)
+
