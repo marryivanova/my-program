@@ -1,0 +1,35 @@
+def merge_sort(left, right):
+    sorted_list = []
+    left_index = right_index = 0
+
+    len_list_right, len_list_left = len(right), len(left)
+
+    while left_index < len_list_left and right_index < len_list_right:
+        if left[left_index] < right[right_index]:
+            sorted_list.append(left[left_index])
+            left_index += 1
+        else:
+            sorted_list.append(right[right_index])
+            right_index += 1
+
+    sorted_list += left[left_index:]
+    sorted_list += right[right_index:]
+
+    return sorted_list
+
+def merge_sorted(num):
+    if len(num) <= 1:
+        return num
+
+    mid = len(num) // 2
+
+    left = merge_sorted(num[:mid])
+    right = merge_sorted(num[mid:])
+
+    return merge_sort(left, right)
+
+n = int(input())
+arr = list(map(int, input().split()))
+
+sorted_arr = merge_sorted(arr)
+print(*sorted_arr
