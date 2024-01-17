@@ -1,0 +1,19 @@
+def hash_map(a, b):
+    dictionary = {}
+    for i, j in zip(a, b):
+        if i == j:
+            dictionary[i] = j
+        else:
+            dictionary[i] = 0
+
+    for key, value in dictionary.items():
+        if key in value:
+            return "true"
+        else:
+            return "false"
+
+a , b = input().split()
+
+res = hash_map(a, b)
+
+print(res)
