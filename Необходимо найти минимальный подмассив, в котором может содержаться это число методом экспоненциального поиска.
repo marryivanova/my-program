@@ -1,0 +1,25 @@
+def binary_search(sequence, element, start, end):
+    while start <= end:
+        mid = (start + end) // 2
+        elem = sequence[mid]
+        if elem == element:
+            return mid
+        if elem < element:
+            start = mid + 1
+        else:
+            end = mid - 1
+    return None
+
+def exponential_search(sequence, element):
+    border = 1
+    while border < len(sequence) - 1 and sequence[border] < element:
+        border = border * 2
+    if border > len(sequence) - 1:
+        border = len(sequence) - 1
+    return border//2, border
+
+sequence = [int(x) for x in input().split(' ')]
+element = int(input())
+res = exponential_search(sequence, element)
+
+print(*res)
