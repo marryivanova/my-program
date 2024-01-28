@@ -1,0 +1,15 @@
+n = int(input('Кол-во книг: '))
+c = list(map(int, input('Список книг: ').split()))
+
+array = {}
+for height in c:
+    if height not in array:
+        array[height] = 1
+    else:
+        array[height] += 1
+
+num_of_piles = len(array)
+piles_heights = sorted(array.values())
+
+print(num_of_piles)
+print(*piles_heights
