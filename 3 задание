@@ -1,0 +1,22 @@
+def gift_delivery(count_events, list_with_info):
+    start = 0
+    mid = len(list_with_info) // 2
+    end = len(list_with_info) - 1
+    for i in list_with_info:
+        if start > mid:
+            return "No"
+        elif start + mid > end:
+            return "No"
+        else:
+            return "Yes"
+
+
+count_events = int(input())
+list_with_info = []
+for _ in range(count_events):
+    info = input().split()
+    list_with_info.append([int(x) for x in info])
+
+res = gift_delivery(count_events, list_with_info)
+
+print(res)
