@@ -1,0 +1,28 @@
+def calculator(num_1: int, num_2: int, symbol):
+    try:
+        if symbol == '+':
+            return num_1 + num_2
+        elif symbol == '-':
+            return num_1 - num_2
+        elif symbol == '*':
+            return num_1 * num_2
+        elif symbol == '/':
+            if num_2 == 0:
+                return "Cannot divide by zero."
+            else:
+                return num_1 / num_2
+        else:
+            return "Invalid symbol."
+    except ZeroDivisionError:
+        return "Cannot divide by zero."
+
+
+num_1 = int(input("Введите число 1: "))
+num_2 = int(input("Введите число : "))
+symbol = input("Введите знак: ")
+
+res = calculator(num_1, num_2, symbol)
+if isinstance(res, str):
+    print(res)
+else:
+    print(f'Результат выражения равен: {num_1} {symbol} {num_2} = {res}')
