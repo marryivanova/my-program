@@ -1,0 +1,30 @@
+import requests
+
+def good_response():
+    response = requests.get('https://github.com/login')
+    if response.status_code == 200:
+        return response
+    else:
+        return None
+
+
+def authorisation():
+    session = requests.Session()
+    login_page_url = 'https://github.com/login'
+    response = session.get(login_page_url)
+    username = 'kjkj'
+    password = 'kjkj'
+
+    login_data = {
+        'username': username,
+        'password': password
+    }
+    resp = session.post(login_page_url, data=login_data)
+    if resp.status_code == 200:
+        return ("Успешная авторизация")
+    else:
+        return ('Ошибка авторизации')
+
+if __name__ == '__main__':
+    print(authorisation())
+    print(good_response())
