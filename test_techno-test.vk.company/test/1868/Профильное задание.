@@ -1,0 +1,57 @@
+Автотесты для структур данных str (строки) и tuple (кортежи) согласно требованиям:
+
+1. Написать по 3 теста на каждую из структур данных str и tuple.
+2. Проверки должны выполняться через аssert
+­3. Все тесты должны проходить.
+4. Один из тестов должен быть параметризован, при этом параметризация должна быть выбрана
+обоснованно и без избыточных параметров.
+­
+
+Тесты для структуры данных str (строка):
+Проверка длины строки:
+
+`def test_string_length():
+    s = "Hello, World!"
+    assert len(s) == 13`
+
+2. Параметризованный тест для проверки наличия подстроки в строке:
+```
+import pytest
+
+@pytest.mark.parametrize("substring", ["hello", "world", "12345"])
+def test_sub_in_string(substring):
+    s = "This is a test string"
+    assert substring in s
+­```
+3. Негативный тест для пустой строки:
+```
+def test_empty_string():
+    s = ""
+    assert not s
+­
+```
+Тесты для структуры данных tuple (кортеж):
+
+Проверка доступа кам кортежа:
+```
+def test_tuple_access():
+    t = (1, 2, 3, 4, 5)
+    assert t[2] == 3
+­```
+
+2. Параметризованный тест для проверки наличия элемента в кортеже:
+```
+import pytest
+
+@pytest.mark.parametrize("element", [1, , 10])
+def test_element_in_tuple(element):
+    t = (1, 2, 3, 4, 5)
+    assert element in t
+­```
+3. Негативный тест для попытки изменить элемент кортежа:
+```
+def test_tuple_immutable():
+    t = (1, 2, 3)
+    with pytest.raises(TypeError):
+        t[1] = 5
+```
