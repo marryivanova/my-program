@@ -1,0 +1,23 @@
+class Solution:
+    def __init__(self, word: str, cd: str):
+        self.word = word
+        self.cd = cd
+
+    def reversePrefix(self) -> str:
+        for i in range(len(self.word)):
+            if self.word[i] == self.cd:
+                prefix = self.word[:i + 1]
+                return prefix[::-1]
+        return self.word
+
+    def reverse(self) -> str:
+        prefix = self.reversePrefix()
+        return prefix + self.word[len(prefix):]
+
+
+if __name__ == "__main__":
+    word = input('Слово: ')
+    cd = input('Введите буквы: ')
+    solution = Solution(word, cd)
+    solution.reversePrefix()
+    solution.reverse()
